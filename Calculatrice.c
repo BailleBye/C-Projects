@@ -1,38 +1,37 @@
 #include <stdio.h>
 
-int sum(int a, int b){
+float sum(float a, float b){
     return a + b; 
 }
 
-int sub(int a, int b){
+float sub(float a, float b){
     return a - b;
 }
 
-int mult(int a, int b){
+float mult(float a, float b){
     return a * b;
 }
 
-int div(int a, int b){
+float div(float a, float b){
+    if(b == 0){
+        printf("Error: Cannot divide by zero\n");
+        return 0;
+    }
     return a / b;
 }
 
 int main(void){
-    int a, b;
+    float a, b;
     char choice;
 
     printf("Enter the first number:\nEnter an opetator: \nEnter the second number: \n");
-    scanf("%d %c %d", &a , &choice, &b);
+    scanf("%f %c %f", &a , &choice, &b);
 
     switch(choice){
-        case '+': printf("%d + %d = %d\n", a, b, sum(a, b)); break;
-        case '-': printf("%d - %d = %d\n", a, b, sub(a, b)); break;
-        case '*': printf("%d * %d = %d\n", a, b, mult(a, b)); break;
-        case '/': 
-        switch(b){
-            case 0: printf("Error: Cannot divide by zero\n"); break;
-            default: printf("%d / %d = %d\n", a, b, div(a, b)); break;
-        }
-        
+        case '+': printf("%f + %f = %f\n", a, b, sum(a, b)); break;
+        case '-': printf("%f - %f = %f\n", a, b, sub(a, b)); break;
+        case '*': printf("%f * %f = %f\n", a, b, mult(a, b)); break;
+        case '/': printf("%f / %f = %f\n", a, b, div(a, b)); break;
         default: printf("Invalid operator\n"); break;
     }
 
